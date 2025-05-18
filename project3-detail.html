@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: IoT Weather Station - Your Name</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Your Name</h1>
+            <p>Aspiring [Your Engineering Discipline] Engineer</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#education">Education</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="resume/Your_Name_Resume.pdf" download="Your_Name_Resume.pdf">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="project-detail-page">
+        <div class="container">
+            <h2>Project: IoT Weather Station</h2>
+            <div class="project-detail-image">Detailed Image of IoT Weather Station (Placeholder)</div>
+
+            <h3>Overview</h3>
+            <p>The goal of this personal project was to build a low-cost Internet of Things (IoT) weather station capable of collecting environmental data (temperature, humidity, pressure) and transmitting it to a cloud platform for remote monitoring and data logging.</p>
+
+            <h3>My Role & Contributions</h3>
+            <p>This was a solo project where I handled all aspects:</p>
+            <ul>
+                <li>Selecting appropriate sensors (e.g., DHT22 for temperature/humidity, BMP280 for pressure).</li>
+                <li>Interfacing sensors with a Raspberry Pi microcontroller.</li>
+                <li>Writing C++ code to read sensor data, process it, and handle error conditions.</li>
+                <li>Setting up a simple web server on the Raspberry Pi to display current readings locally. (Optional: or sending data to a cloud IoT platform like ThingSpeak or Adafruit IO).</li>
+                <li>Designing and 3D printing a weatherproof enclosure for the outdoor sensor unit.</li>
+            </ul>
+
+            <h3>Technologies Used</h3>
+            <ul>
+                <li>Raspberry Pi (or ESP32/ESP8266 for a more compact version)</li>
+                <li>C++ (for microcontroller programming)</li>
+                <li>Python (potentially for data processing or server-side scripting)</li>
+                <li>Temperature & Humidity Sensor (e.g., DHT11/DHT22)</li>
+                <li>Barometric Pressure Sensor (e.g., BMP180/BMP280)</li>
+                <li>(Optional) Cloud IoT Platform (e.g., ThingSpeak, Adafruit IO, AWS IoT)</li>
+                <li>Basic Linux command-line skills for Raspberry Pi setup.</li>
+            </ul>
+
+            <h3>Challenges & Solutions</h3>
+            <p>One challenge was ensuring reliable sensor readings over extended periods. This involved careful wiring, power supply considerations, and implementing software routines to handle sensor timeouts or erroneous data. Another aspect was learning the basics of network communication to send data from the device, which required understanding HTTP requests or MQTT protocols (depending on the chosen method).</p>
+
+            <h3>Outcomes & Learnings</h3>
+            <p>The weather station successfully collected and transmitted data for several weeks, providing valuable insights into local weather patterns. This project was a great learning experience in embedded systems programming, sensor interfacing, basic IoT concepts, and practical problem-solving. I gained hands-on experience with both hardware and software development for a real-world application.</p>
+            <a href="https://github.com/yourusername/iot-weather-station" target="_blank" class="project-link" style="margin-right: 10px;">View Code on GitHub</a>
+            <a href="index.html#projects" class="back-link">Back to Projects</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

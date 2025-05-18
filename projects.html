@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Your Name</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">
+                <h1>Your Name</h1>
+                <p>Aspiring [Your Engineering Discipline] Engineer</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#education">Education</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="resume/Your_Name_Resume.pdf" download="Your_Name_Resume.pdf">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="all-projects">
+        <div class="container">
+            <h2>All My Projects</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Here's a collection of my academic, personal, and team projects. Click on any project to learn more.</p>
+            <div class="project-grid">
+                <div class="project-card">
+                    <!-- <img src="images/project1.jpg" alt="Project 1 Title"> -->
+                    <div class="project-placeholder-img">Project Image 1</div>
+                    <h3>Project Title 1: e.g., Autonomous Rover</h3>
+                    <p>A brief description of the project, your role, and key achievements. What problem did it solve? What technologies did you use?</p>
+                    <p><strong>Technologies:</strong> Arduino, Python, CAD Software</p>
+                    <a href="projects/project1-detail.html" class="project-link">View Details</a>
+                </div>
+                <div class="project-card">
+                    <!-- <img src="images/project2.jpg" alt="Project 2 Title"> -->
+                    <div class="project-placeholder-img">Project Image 2</div>
+                    <h3>Project Title 2: e.g., Bridge Design Analysis</h3>
+                    <p>Another project description. Highlight your contributions and the skills you demonstrated.</p>
+                    <p><strong>Technologies:</strong> MATLAB, SolidWorks, FEA</p>
+                    <a href="projects/project2-detail.html" class="project-link">View Details</a>
+                </div>
+                <div class="project-card">
+                    <!-- <img src="images/project3.jpg" alt="Project 3 Title"> -->
+                    <div class="project-placeholder-img">Project Image 3</div>
+                    <h3>Project Title 3: e.g., IoT Weather Station</h3>
+                    <p>Detail this project as well. Focus on results and learned skills.</p>
+                    <p><strong>Technologies:</strong> Raspberry Pi, C++, Sensors</p>
+                    <a href="projects/project3-detail.html" class="project-link">View Details</a>
+                </div>
+                <!-- Example of a new project card:
+                <div class="project-card">
+                    <div class="project-placeholder-img">Project Image 4</div>
+                    <h3>Project Title 4: e.g., Mobile App Concept</h3>
+                    <p>Description of your fourth project. What did you learn? What tools did you use?</p>
+                    <p><strong>Technologies:</strong> Figma, Swift (Conceptual)</p>
+                    <a href="projects/project4-detail.html" class="project-link">View Details</a> // Remember to create project4-detail.html in the projects/ folder
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
