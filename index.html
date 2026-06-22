@@ -1,170 +1,800 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jorge Lackington P.</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jorge Lackington P. — Mechanical &amp; Industrial Engineer</title>
+<meta name="description" content="Jorge Lackington Panza — Mechanical & Industrial Engineer (UC Chile). Energy transition, nuclear power, solar & green hydrogen. Projects, leadership and a photo journey through the years." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --canvas:#F5F6F8;
+    --surface:#FFFFFF;
+    --ink:#101A24;
+    --ink-soft:#3C4856;
+    --muted:#697585;
+    --primary:#143C4E;
+    --primary-2:#1D5468;
+    --amber:#F4A12B;
+    --heat:#E1542F;
+    --line:#E2E6EB;
+    --line-strong:#D2D8DF;
+
+    --energy: linear-gradient(135deg, var(--amber), var(--heat));
+    --maxw: 1080px;
+
+    --f-display:"Space Grotesk", system-ui, sans-serif;
+    --f-body:"Inter", system-ui, sans-serif;
+    --f-mono:"Space Mono", ui-monospace, monospace;
+
+    --r:14px;
+    --r-sm:10px;
+    --shadow: 0 1px 2px rgba(16,26,36,.04), 0 14px 40px -22px rgba(16,26,36,.30);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:var(--f-body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  h1,h2,h3{font-family:var(--f-display);font-weight:600;line-height:1.08;letter-spacing:-.02em;margin:0}
+  .eyebrow{
+    font-family:var(--f-mono);font-size:12.5px;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--primary-2);
+    display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--energy);border-radius:2px}
+
+  .skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;z-index:200}
+  .skip:focus{left:16px}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(245,246,248,.78);
+    backdrop-filter:saturate(140%) blur(12px);
+    -webkit-backdrop-filter:saturate(140%) blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease, background .25s ease;
+  }
+  header.scrolled{border-bottom-color:var(--line);background:rgba(245,246,248,.92)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+  .brand{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:-.02em;white-space:nowrap}
+  .brand b{color:var(--primary)}
+  .brand .dot{color:var(--heat)}
+  .nav-right{display:flex;align-items:center;gap:26px}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{font-size:14.5px;color:var(--ink-soft);font-weight:500;transition:color .18s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    font-family:var(--f-mono);font-size:12.5px;font-weight:700;letter-spacing:.04em;
+    border:1px solid var(--line-strong);padding:9px 16px;border-radius:999px;
+    color:var(--primary)!important;transition:all .2s;
+  }
+  .nav-cta:hover{border-color:var(--primary);background:var(--primary);color:#fff!important}
+
+  /* language switch */
+  .lang-switch{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;overflow:hidden;font-family:var(--f-mono)}
+  .lang-switch button{
+    background:none;border:none;cursor:pointer;font-family:inherit;font-weight:700;
+    font-size:12px;letter-spacing:.06em;padding:8px 13px;color:var(--muted);transition:all .18s;
+  }
+  .lang-switch button[aria-pressed="true"]{background:var(--primary);color:#fff}
+
+  .menu-btn{display:none;background:none;border:1px solid var(--line-strong);border-radius:8px;width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center}
+  .menu-btn span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+  .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+  .menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--f-mono);font-size:13px;font-weight:700;letter-spacing:.03em;
+    padding:13px 22px;border-radius:999px;cursor:pointer;border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .2s ease, background .2s, color .2s;
+  }
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(20,60,78,.7)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px}
+  .btn .arr{transition:transform .2s}
+  .btn:hover .arr{transform:translate(3px,-3px)}
+
+  /* hero */
+  .hero{padding:58px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:54px;align-items:center}
+  .welcome{
+    font-family:var(--f-mono);font-size:14px;font-weight:700;letter-spacing:.06em;
+    color:var(--primary-2);margin-bottom:18px;display:flex;align-items:center;gap:10px;min-height:22px;
+  }
+  .welcome .globe{width:8px;height:8px;border-radius:50%;background:var(--energy);box-shadow:0 0 0 4px rgba(244,161,43,.18);flex:0 0 auto}
+  .welcome .word{transition:opacity .4s ease}
+  .hero h1{font-size:clamp(48px,9vw,88px);font-weight:700;letter-spacing:-.035em;line-height:.98}
+  .hero h1 .accent{background:var(--energy);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .role{font-family:var(--f-display);font-weight:500;font-size:clamp(19px,2.4vw,24px);color:var(--ink-soft);margin:18px 0 0;letter-spacing:-.01em}
+  .hero .focus{font-family:var(--f-mono);font-size:13.5px;letter-spacing:.03em;color:var(--primary-2);margin:14px 0 0;font-weight:700}
+  .hero .lede{font-size:18px;color:var(--ink-soft);max-width:46ch;margin:22px 0 32px;line-height:1.6}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:13px}
+
+  .portrait{position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);background:var(--surface);margin:0}
+  .portrait::after{content:"";position:absolute;inset:0;border-radius:20px;border:1px solid rgba(255,255,255,.5);pointer-events:none}
+  .portrait .tag{
+    position:absolute;left:14px;bottom:14px;z-index:3;
+    font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:#fff;
+    background:rgba(16,26,36,.5);backdrop-filter:blur(6px);padding:7px 12px;border-radius:999px;
+  }
+
+  /* section */
+  .section{padding:84px 0;border-top:1px solid var(--line)}
+  .section-head{max-width:60ch;margin-bottom:46px}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px)}
+  .section-head p{color:var(--muted);margin:16px 0 0;font-size:17px}
+
+  /* photo placeholder */
+  .photo{position:relative;overflow:hidden;background:radial-gradient(120% 120% at 0% 0%, #EAF0F3 0%, #E7ECF1 40%, #EDEAE3 100%)}
+  .photo img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+  .photo .ph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:18px}
+  .photo .ph svg{width:34px;height:34px;color:var(--primary);opacity:.45}
+  .photo .ph .fn{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.02em;color:var(--primary-2);opacity:.8;word-break:break-all}
+  .photo.has-img .ph{display:none}
+
+  /* timeline */
+  .timeline{position:relative;margin-top:8px}
+  .timeline::before{content:"";position:absolute;left:18px;top:6px;bottom:6px;width:2px;border-radius:2px;background:linear-gradient(to bottom,var(--primary-2) 0%, var(--amber) 65%, var(--heat) 100%)}
+  .t-item{position:relative;padding:0 0 46px 58px}
+  .t-item:last-child{padding-bottom:0}
+  .t-item .node{position:absolute;left:11px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--canvas);border:3px solid var(--primary-2);z-index:2}
+  .t-item:nth-child(n+4) .node{border-color:var(--amber)}
+  .t-item:nth-child(n+6) .node{border-color:var(--heat)}
+  .t-year{font-family:var(--f-mono);font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--primary);margin-bottom:14px}
+  .t-card{display:grid;grid-template-columns:240px 1fr;gap:26px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease}
+  .t-card:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(16,26,36,.05),0 22px 48px -26px rgba(16,26,36,.4)}
+  .t-card .photo{border-radius:var(--r-sm);aspect-ratio:4/3;cursor:zoom-in}
+  .t-text{align-self:center;padding:6px 10px 6px 0}
+  .t-text h3{font-size:20px;margin-bottom:8px}
+  .t-text p{margin:0;color:var(--ink-soft);font-size:15.5px;line-height:1.6}
+  .t-text .where{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;color:var(--muted);margin-top:12px;text-transform:uppercase}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+  .about-grid p{margin:0 0 18px;color:var(--ink-soft);font-size:16.5px}
+  .about-grid p:last-child{margin-bottom:0}
+  .facts{display:grid;gap:14px}
+  .fact{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 18px}
+  .fact .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:88px;padding-top:2px}
+  .fact .v{font-size:15.5px;color:var(--ink);font-weight:500}
+
+  /* leadership */
+  .lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .lead{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .25s ease, box-shadow .25s ease}
+  .lead:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(16,26,36,.05),0 26px 54px -28px rgba(16,26,36,.45)}
+  .lead-top{display:flex;align-items:center;gap:16px;padding:22px 24px 0}
+  .lead-logo{width:52px;height:52px;border-radius:12px;flex:0 0 auto;background:radial-gradient(120% 120% at 0 0,#EAF0F3,#EDEAE3);border:1px solid var(--line);overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .lead-logo img{width:100%;height:100%;object-fit:contain;padding:6px}
+  .lead-logo .ph{font-family:var(--f-mono);font-size:10px;color:var(--primary-2);opacity:.7}
+  .lead-logo.has-img .ph{display:none}
+  .lead h3{font-size:21px}
+  .lead .role{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;color:var(--primary-2);margin-top:3px;text-transform:uppercase}
+  .lead-body{padding:16px 24px 0}
+  .lead-body p{margin:0;color:var(--ink-soft);font-size:15.5px}
+  .lead-stats{display:flex;gap:26px;padding:18px 24px}
+  .lead-stats .s{display:flex;flex-direction:column}
+  .lead-stats .n{font-family:var(--f-display);font-weight:700;font-size:24px;color:var(--primary);line-height:1}
+  .lead-stats .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .lead-tags{margin-top:auto;padding:0 24px 22px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag-chip{font-family:var(--f-mono);font-size:11px;letter-spacing:.03em;color:var(--ink-soft);background:var(--canvas);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+
+  /* focus */
+  .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .focus{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+  .focus .num{font-family:var(--f-mono);font-size:12px;font-weight:700;color:var(--heat);letter-spacing:.06em}
+  .focus h3{font-size:18.5px;margin:14px 0 10px}
+  .focus p{margin:0;color:var(--ink-soft);font-size:15px;line-height:1.6}
+
+  /* skills */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .skill-col h3{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:18px}
+  .skill-list{display:flex;flex-wrap:wrap;gap:9px}
+  .skill-list span{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14px;color:var(--ink-soft);transition:border-color .2s,color .2s}
+  .skill-list span:hover{border-color:var(--primary-2);color:var(--ink)}
+
+  /* education */
+  .edu{display:grid;gap:0}
+  .edu-item{display:grid;grid-template-columns:160px 1fr;gap:30px;padding:26px 0;border-top:1px solid var(--line)}
+  .edu-item:first-child{border-top:none}
+  .edu-when{font-family:var(--f-mono);font-size:13px;color:var(--primary);font-weight:700;letter-spacing:.03em}
+  .edu-when .status{display:block;color:var(--muted);font-weight:400;margin-top:5px;font-size:11.5px;letter-spacing:.04em}
+  .edu-item h3{font-size:21px;margin-bottom:6px}
+  .edu-item .school{color:var(--ink-soft);font-size:15.5px}
+  .edu-item .course{color:var(--muted);font-size:14px;margin-top:10px;font-family:var(--f-mono);letter-spacing:.02em}
+
+  /* contact */
+  .contact{background:var(--primary);color:#fff;border-radius:24px;padding:64px;text-align:center;position:relative;overflow:hidden}
+  .contact::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:var(--energy);filter:blur(90px);opacity:.32;top:-140px;right:-90px}
+  .contact .eyebrow{color:#fff}
+  .contact .eyebrow::before{background:var(--energy)}
+  .contact h2{font-size:clamp(28px,4vw,42px);color:#fff;position:relative}
+  .contact p{color:rgba(255,255,255,.78);max-width:48ch;margin:18px auto 34px;position:relative;font-size:17px}
+  .contact-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+  .contact .btn-primary{background:#fff;color:var(--primary)}
+  .contact .btn-primary:hover{box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+  .contact .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+  .contact .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+  /* footer */
+  footer{padding:40px 0;border-top:1px solid var(--line)}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot .c{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+  .foot a{font-size:13.5px;color:var(--ink-soft)}
+  .foot a:hover{color:var(--ink)}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:300;background:rgba(16,26,36,.86);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:30px}
+  .lb.open{display:flex}
+  .lb img{max-width:90vw;max-height:86vh;border-radius:12px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+  .lb .close{position:absolute;top:22px;right:26px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;line-height:1}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:38px}
+    .portrait{max-width:360px}
+    .about-grid,.lead-grid,.focus-grid,.skills-grid{grid-template-columns:1fr;gap:28px}
+    .nav-links{display:none}
+    .nav-links.show{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--surface);border-bottom:1px solid var(--line);padding:8px 28px 18px}
+    .nav-links.show a{padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
+    .nav-links.show .nav-cta{margin-top:14px;border:1px solid var(--line-strong)}
+    .menu-btn{display:flex}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .section{padding:60px 0}
+    .t-card{grid-template-columns:1fr;gap:0}
+    .t-card .photo{aspect-ratio:16/10;margin-bottom:14px}
+    .t-text{padding:0 6px 10px}
+    .edu-item{grid-template-columns:1fr;gap:10px}
+    .contact{padding:44px 26px}
+    .lead-stats{gap:20px}
+    .nav-right{gap:14px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+    .btn,.t-card,.lead,.welcome .word{transition:none}
+  }
+  :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+</style>
 </head>
-<body>
-          
-    <header id="pageHeader"> <co id="1"> <!-- Added id for easier JS targeting -->
-        <div class="container header-container"> <!-- Added class for flex layout -->
-            <div class="site-title">
-                <h1><a href="index.html">Jorge Lackington P.</a></h1> <!-- Made site title a link to home -->
-                <p>Mechanical & Industrial Engineer</p>
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
-                <i class="fas fa-bars"></i> <!-- Font Awesome hamburger icon -->
-            </button>
-            <nav class="main-nav" id="mainNav"> <!-- Added class and id to nav -->
-                <ul>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="index.html#skills">Skills</a></li>
-                    <li><a href="index.html#education">Education</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="resume/CV_Ingles.pdf" download="CV_Ingles.pdf">Resume</a></li>
-                </ul>
-            </nav>
+<body data-lang="en">
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top">Jorge <b>Lackington</b><span class="dot">.</span></a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navlinks" aria-label="Primary">
+        <a href="#leadership" data-i18n="nav.leadership">Leadership</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#education" data-i18n="nav.education">Education</a>
+        <a href="#journey" data-i18n="nav.journey">Journey</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a class="nav-cta" href="resume/CV_Ingles.pdf" target="_blank" rel="noopener" data-i18n="nav.resume">Resume ↗</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button id="lang-en" aria-pressed="true">EN</button>
+        <button id="lang-es" aria-pressed="false">ES</button>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <div class="welcome"><span class="globe"></span><span class="word" id="welcomeWord">Welcome.</span></div>
+        <h1>Jorge<br><span class="accent">Lackington.</span></h1>
+        <p class="role" data-i18n="hero.role">Mechanical &amp; Industrial Engineer</p>
+        <p class="focus" data-i18n="hero.focus">// Energy transition · nuclear · solar &amp; green hydrogen</p>
+        <p class="lede" data-i18n="hero.lede">I design and model energy systems, and I build organizations that move the conversation forward. From discrete-event simulation to a nuclear-energy student movement, I like turning hard problems into things that actually run.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact"><span data-i18n="hero.cta.contact">Get in touch</span> <span class="arr">↗</span></a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/jorge-lackington/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.2 8.2h4.6V24H.2V8.2Zm7.5 0h4.4v2.15h.06c.6-1.14 2.08-2.35 4.28-2.35 4.58 0 5.42 3 5.42 6.92V24h-4.6v-6.9c0-1.64-.03-3.75-2.28-3.75-2.29 0-2.64 1.78-2.64 3.63V24H7.7V8.2Z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="resume/CV_Ingles.pdf" target="_blank" rel="noopener" data-i18n="hero.cta.cv">Download CV</a>
         </div>
-    </header>
+      </div>
+      <div class="reveal">
+        <figure class="portrait photo" data-full="images/profile.webp">
+          <img src="images/profile.webp" alt="Portrait of Jorge Lackington" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg>
+            <span class="fn">images/profile.webp</span>
+          </div>
+          <span class="tag" data-i18n="hero.portrait">portrait · 2025</span>
+        </figure>
+      </div>
+    </div>
+  </section>
 
+  <!-- LEADERSHIP -->
+  <section class="section" id="leadership">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="lead.eyebrow">Leadership &amp; impact</p>
+        <h2 data-i18n="lead.title">Organizations I've helped build.</h2>
+        <p data-i18n="lead.intro">Two projects that taught me how to lead people, manage money, and ship real outcomes — not just ideas.</p>
+      </div>
+      <div class="lead-grid">
 
-
-    <section id="hero">
-        <div class="container">
-            <div class="profile-pic-container">
-                <!-- Ensure you have a rectangular profile.jpg in the images folder -->
-                <img src="images/profile.webp" alt="Jorge Lackington Panza" class="profile-pic">
+        <article class="lead reveal">
+          <div class="lead-top">
+            <div class="lead-logo" data-full="images/chile_nuclear_logo.webp">
+              <img src="images/chile_nuclear_logo.webp" alt="Chile Nuclear logo" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <span class="ph">logo</span>
             </div>
-            <div class="hero-text">
-                <h2 id="welcomeMessage">Welcome!</h2>
-                <p>I'm passionate about sustainable energy production and eager to apply my engineering skills to real-world challenges. Explore my work and get in touch!</p>
+            <div>
+              <h3>Chile Nuclear</h3>
+              <div class="role" data-i18n="cn.role">Founder · Head of logistics</div>
             </div>
-        </div>
-    </section>
+          </div>
+          <div class="lead-body"><p data-i18n="cn.body">A student movement spreading knowledge about nuclear power and how it can help decarbonize Chile's electric grid.</p></div>
+          <div class="lead-stats">
+            <div class="s"><span class="n">10+</span><span class="l" data-i18n="cn.s1">Active members</span></div>
+            <div class="s"><span class="n">60+</span><span class="l" data-i18n="cn.s2">Volunteers</span></div>
+          </div>
+          <div class="lead-tags">
+            <span class="tag-chip" data-i18n="tag.leadership">Leadership</span>
+            <span class="tag-chip" data-i18n="tag.teamwork">Teamwork</span>
+            <span class="tag-chip" data-i18n="tag.speaking">Public speaking</span>
+          </div>
+        </article>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-
-            <p>I'm Jorge Lackington, a Mechanical Engineering student at Pontificia Universidad Católica de Chile. I have a strong interest in Nuclear Power and Energy Production. I have my own student project: Chile Nuclear.</p> 
-                
-            <p>I’ve learned about impact by managing budgets and coordinating beach cleanups with Ucéanos. I've written code to automate complex processes. And I believe a global problem requires a global perspective, which is why I went to Prague for an Erasmus exchange semester.</p> 
-                
-            <p>I'm usually found on a mountain trail, in my workshop with a new DIY project, or pushing my limits with calisthenics.</p> 
-                
-            <p>I built this website to share my projects and connect with others who are passionate about technology, sustainability, and making a difference. I hope you'll take a look around!</p>
-            
-        </div>
-    </section>
-
-    <section id="featured-projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="images/chile_nuclear_logo.webp" alt="Chile Nuclear Logo">
-                    <h3>Chile Nuclear</h3>
-                    <p>Founder and current head of logistics. +10 active members and +60 volunteers. Spreading knowledge about nuclear power and 
-                        how to decarbonize the electric grid of Chile.</p>
-                    <p><strong>Skills:</strong> Leadership, Teamwork, Public Speaking</p>
-                    <a href="projects/chile_nuclear.html" class="project-link">View Details</a>
-                </div>
-                <div class="project-card">
-                    <img src="images/uceanos_logo.webp" alt="Uceanos Logo">
-                    <h3>Ucéanos</h3>
-                    <p>Former head of finance and logistics. +6 beaches cleaned with +120 volunteers along the Chilean coast. Active community engagement and long-lasting impact.</p>
-                    <p><strong>Skills:</strong> Teamwork, Public Relations, Planning</p>
-                    <a href="projects/uceanos.html" class="project-link">View Details</a>
-                </div>
-                <div class="project-card">
-                    <img src="images/project3.jpg" alt="Project 3 Title">
-                    <h3>Project 3</h3>
-                    <p>Details.</p>
-                    <p><strong>Technologies:</strong>...</p>
-                    <a href="projects/project3-detail.html" class="project-link">View Details</a>
-                </div>
+        <article class="lead reveal">
+          <div class="lead-top">
+            <div class="lead-logo" data-full="images/uceanos_logo.webp">
+              <img src="images/uceanos_logo.webp" alt="Ucéanos logo" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <span class="ph">logo</span>
             </div>
-            <div class="text-center">
-                <a href="projects.html" class="view-all-link">View All Projects</a>
+            <div>
+              <h3>Ucéanos</h3>
+              <div class="role" data-i18n="uc.role">Former head of finance &amp; logistics</div>
             </div>
-        </div>
-    </section>
+          </div>
+          <div class="lead-body"><p data-i18n="uc.body">Community-driven beach cleanups along the Chilean coast — real engagement and long-lasting impact, run on a real budget.</p></div>
+          <div class="lead-stats">
+            <div class="s"><span class="n">6+</span><span class="l" data-i18n="uc.s1">Beaches cleaned</span></div>
+            <div class="s"><span class="n">120+</span><span class="l" data-i18n="uc.s2">Volunteers</span></div>
+          </div>
+          <div class="lead-tags">
+            <span class="tag-chip" data-i18n="tag.teamwork">Teamwork</span>
+            <span class="tag-chip" data-i18n="tag.pr">Public relations</span>
+            <span class="tag-chip" data-i18n="tag.planning">Planning</span>
+          </div>
+        </article>
 
-    <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Technical Skills</h3>
-                    <ul>
-                        <li>CAD Software (Inventor, Fusion 360)</li>
-                        <li>Programming (Python, Mathematica, R)</li>
-                        <li>Finite Element Analysis (FEA)</li>
-                        <li>Data Analysis</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Software & Tools</h3>
-                    <ul>
-                        <li>MS Office (Excel, Word, PowerPoint)</li>
-                        <li>Version Control (Git, GitHub)</li>
-                        <li>LabVIEW</li>
-                        <li>VS Code, Sublime Text</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <ul>
-                        <li>Leadership</li>
-                        <li>Teamwork & Collaboration</li>
-                        <li>Communication (Written & Verbal)</li>
-                        <li>Adaptability</li>
-                    </ul>
-                </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="about.eyebrow">About</p>
+        <h2 data-i18n="about.title">Engineer first, builder always.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p data-i18n="about.p1">I'm a Mechanical &amp; Industrial Engineer from UC Chile with a strong pull toward sustainable energy — nuclear power, solar, and green hydrogen. I'm as comfortable in a simulation as I am in front of a room making the case for clean baseload power.</p>
+          <p data-i18n="about.p2">I learned what impact really means by managing budgets and coordinating beach cleanups with Ucéanos, and I built my own project, Chile Nuclear, from zero. Along the way I've written code to automate complex processes and spent a semester abroad in Prague, because a global problem deserves a global perspective.</p>
+          <p data-i18n="about.p3">Off the clock you'll usually find me on a mountain trail, in the workshop with a new DIY project, or pushing my limits with calisthenics.</p>
+        </div>
+        <div class="facts reveal">
+          <div class="fact"><span class="k" data-i18n="fact.focus.k">Focus</span><span class="v" data-i18n="fact.focus.v">Energy systems · nuclear · solar &amp; H₂</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.based.k">Based in</span><span class="v">Santiago, Chile</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.building.k">Building</span><span class="v" data-i18n="fact.building.v">Chile Nuclear — energy advocacy</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.modeling.k">Modeling</span><span class="v" data-i18n="fact.modeling.v">Discrete-event simulation, Python</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.langs.k">Languages</span><span class="v" data-i18n="fact.langs.v">Spanish · English · Italian · French</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.open.k">Open to</span><span class="v" data-i18n="fact.open.v">Energy-sector roles &amp; internships</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="edu.eyebrow">Education</p>
+        <h2 data-i18n="edu.title">Where I studied.</h2>
+      </div>
+      <div class="edu reveal">
+        <div class="edu-item">
+          <div class="edu-when">2026<span class="status" data-i18n="edu.expected">Expected · Dec</span></div>
+          <div>
+            <h3 data-i18n="edu1.deg">M.Sc. Industrial Engineering</h3>
+            <div class="school">Pontificia Universidad Católica de Chile · Santiago</div>
+            <div class="course" data-i18n="edu1.course">Finance · Marketing · Optimization · Accounting</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-when">2025<span class="status" data-i18n="edu.graduated">Graduated · Dec</span></div>
+          <div>
+            <h3 data-i18n="edu2.deg">B.Sc. Mechanical Engineering</h3>
+            <div class="school">Pontificia Universidad Católica de Chile · Santiago</div>
+            <div class="course" data-i18n="edu2.course">Thermodynamics · Energy conversion · Nuclear reactors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THROUGH THE YEARS -->
+  <section class="section" id="journey">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="journey.eyebrow">Through the years</p>
+        <h2 data-i18n="journey.title">A few years, in pictures.</h2>
+        <p data-i18n="journey.intro">The short version of how I got here — from first-year engineering to a graduating energy specialist. Tap any photo to view it full size.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item reveal">
+          <span class="node"></span>
+          <div class="t-year">2021</div>
+          <div class="t-card">
+            <figure class="photo" data-full="images/2021-engineering.jpg">
+              <img src="images/2021-engineering.jpg" alt="Jorge in 2021" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg><span class="fn">images/2021-engineering.jpg</span></div>
+            </figure>
+            <div class="t-text">
+              <h3 data-i18n="t1.title">Starting Mechanical Engineering</h3>
+              <p data-i18n="t1.body">First years at UC Chile — thermodynamics, energy conversion, and the spark of an obsession with how we power a country.</p>
+              <div class="where" data-i18n="t1.where">Pontificia Universidad Católica de Chile</div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <section id="education">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="education-entry">
-                <h3>Master of Science in Industrial Engineering</h3>
-                <p>Pontificia Universidad Católica de Chile, Santiago, Chile</p>
-                <p>Expected Graduation: December, 2026</p>
-                <p>Relevant Coursework: Finance, Marketing, Optimization, Accounting</p>
+        <div class="t-item reveal">
+          <span class="node"></span>
+          <div class="t-year">2022</div>
+          <div class="t-card">
+            <figure class="photo" data-full="images/2022-chile-nuclear.jpg">
+              <img src="images/2022-chile-nuclear.jpg" alt="Chile Nuclear" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg><span class="fn">images/2022-chile-nuclear.jpg</span></div>
+            </figure>
+            <div class="t-text">
+              <h3 data-i18n="t2.title">Founding Chile Nuclear</h3>
+              <p data-i18n="t2.body">Launched a student movement to make the case for nuclear power as part of decarbonizing Chile's grid. Started with a handful of people and a lot of slides.</p>
+              <div class="where" data-i18n="t2.where">Founder · Head of logistics</div>
             </div>
-            <div class="education-entry">
-                <h3>Bachelor of Science in Mechanical Engineering</h3>
-                <p>Pontificia Universidad Católica de Chile, Santiago, Chile</p>
-                <p>Graduated: December, 2025</p>
-                <p>Relevant Coursework: Thermodynamics, Energy Conversion, Nuclear Reactors</p>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <span class="node"></span>
+          <div class="t-year">2023</div>
+          <div class="t-card">
+            <figure class="photo" data-full="images/2023-uceanos.jpg">
+              <img src="images/2023-uceanos.jpg" alt="Ucéanos beach cleanup" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg><span class="fn">images/2023-uceanos.jpg</span></div>
+            </figure>
+            <div class="t-text">
+              <h3 data-i18n="t3.title">Cleaning the coast with Ucéanos</h3>
+              <p data-i18n="t3.body">Ran finance and logistics for beach cleanups along the Chilean coast — budgets, volunteers, and a lot of trash bags. Impact you can measure.</p>
+              <div class="where" data-i18n="t3.where">Head of finance &amp; logistics</div>
             </div>
+          </div>
         </div>
-        
-    </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out!</p>
-            <ul class="contact-links">
-                <li><a href="mailto:jorgelp@uc.cl"><i class="fas fa-envelope"></i> jorgelp@uc.cl</a></li>
-                <li><a href="https://www.linkedin.com/in/jorge-lackington/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            </ul>
+        <div class="t-item reveal">
+          <span class="node"></span>
+          <div class="t-year">2023</div>
+          <div class="t-card">
+            <figure class="photo" data-full="images/2023-prague.jpg">
+              <img src="images/2023-prague.jpg" alt="Exchange in Prague" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg><span class="fn">images/2023-prague.jpg</span></div>
+            </figure>
+            <div class="t-text">
+              <h3 data-i18n="t4.title">Exchange semester in Prague</h3>
+              <p data-i18n="t4.body">A global problem needs a global perspective. Studied abroad in the Czech Republic and came back with a wider map of how the energy world works.</p>
+              <div class="where" data-i18n="t4.where">Erasmus exchange · Czech Republic</div>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Jorge Lackington Panza. All rights reserved.</p>
+        <div class="t-item reveal">
+          <span class="node"></span>
+          <div class="t-year">2024</div>
+          <div class="t-card">
+            <figure class="photo" data-full="images/2024-research.jpg">
+              <img src="images/2024-research.jpg" alt="Energy systems research" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg><span class="fn">images/2024-research.jpg</span></div>
+            </figure>
+            <div class="t-text">
+              <h3 data-i18n="t5.title">Energy systems &amp; simulation</h3>
+              <p data-i18n="t5.body">Deep into modeling — discrete-event simulation in Python, concentrated solar power and green-hydrogen research. The technical core of what I do.</p>
+              <div class="where" data-i18n="t5.where">Research &amp; coursework</div>
+            </div>
+          </div>
         </div>
-    </footer>
 
-    <script src="script.js" defer></script>
+        <div class="t-item reveal">
+          <span class="node"></span>
+          <div class="t-year">2025</div>
+          <div class="t-card">
+            <figure class="photo" data-full="images/2025-graduation.jpg">
+              <img src="images/2025-graduation.jpg" alt="Graduation 2025" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg><span class="fn">images/2025-graduation.jpg</span></div>
+            </figure>
+            <div class="t-text">
+              <h3 data-i18n="t6.title">B.Sc. Mechanical Engineering</h3>
+              <p data-i18n="t6.body">Wrapped the mechanical engineering degree and rolled straight into the industrial engineering master's — finance, optimization, and operations.</p>
+              <div class="where" data-i18n="t6.where">Graduated · December 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <span class="node"></span>
+          <div class="t-year">2026</div>
+          <div class="t-card">
+            <figure class="photo" data-full="images/2026-now.jpg">
+              <img src="images/2026-now.jpg" alt="Now, 2026" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+              <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L19 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="13" cy="12.5" r="3.5"/></svg><span class="fn">images/2026-now.jpg</span></div>
+            </figure>
+            <div class="t-text">
+              <h3 data-i18n="t7.title">Graduating &amp; looking ahead</h3>
+              <p data-i18n="t7.body">Finishing the master's and looking for the right place to put it to work — somewhere serious about the energy transition.</p>
+              <div class="where" data-i18n="t7.where">M.Sc. Industrial Engineering · 2026</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="work.eyebrow">What I work on</p>
+        <h2 data-i18n="work.title">The technical core.</h2>
+      </div>
+      <div class="focus-grid">
+        <div class="focus reveal">
+          <div class="num">01</div>
+          <h3 data-i18n="f1.title">Energy systems modeling</h3>
+          <p data-i18n="f1.body">Discrete-event and process simulation in Python — fitting distributions, validating statistically, and finding the bottleneck that actually matters.</p>
+        </div>
+        <div class="focus reveal">
+          <div class="num">02</div>
+          <h3 data-i18n="f2.title">Solar &amp; thermal</h3>
+          <p data-i18n="f2.body">Concentrated solar power and solar-thermal modeling, including weather-data handling and techno-economic thinking for high-irradiance sites.</p>
+        </div>
+        <div class="focus reveal">
+          <div class="num">03</div>
+          <h3 data-i18n="f3.title">Hydrogen &amp; clean fuels</h3>
+          <p data-i18n="f3.body">Green hydrogen, electrolysis, and thermochemical fuel pathways — the chemistry and economics of storing energy as molecules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="skills.eyebrow">Skills</p>
+        <h2 data-i18n="skills.title">The toolkit.</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-col reveal">
+          <h3 data-i18n="skills.g1">Technical</h3>
+          <div class="skill-list"><span>Python</span><span>Mathematica</span><span>R</span><span>SimPy / DES</span><span>FEA</span><span data-i18n="skill.data">Data analysis</span><span>Inventor</span><span>Fusion 360</span></div>
+        </div>
+        <div class="skill-col reveal">
+          <h3 data-i18n="skills.g2">Tools</h3>
+          <div class="skill-list"><span>Git / GitHub</span><span>VS Code</span><span>LabVIEW</span><span>Excel</span><span>PowerPoint</span><span>Word</span></div>
+        </div>
+        <div class="skill-col reveal">
+          <h3 data-i18n="skills.g3">Working with people</h3>
+          <div class="skill-list"><span data-i18n="tag.leadership">Leadership</span><span data-i18n="tag.teamwork">Teamwork</span><span data-i18n="skill.comm">Communication</span><span data-i18n="tag.speaking">Public speaking</span><span data-i18n="skill.adapt">Adaptability</span><span data-i18n="tag.planning">Planning</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="contact reveal">
+        <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+        <h2 data-i18n="contact.title">Let's talk energy.</h2>
+        <p data-i18n="contact.body">I'm always open to new projects, ideas, and opportunities — especially in the energy sector. Reach out and let's see what we can build.</p>
+        <div class="contact-cta">
+          <a class="btn btn-primary" href="mailto:jorgelp@uc.cl"><span data-i18n="contact.email">Email me</span> <span class="arr">↗</span></a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/jorge-lackington/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="c">© 2026 Jorge Lackington Panza</span>
+    <div style="display:flex;gap:22px">
+      <a href="https://www.linkedin.com/in/jorge-lackington/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="resume/CV Jorge Lackington 2026.pdf" target="_blank" rel="noopener" data-i18n="foot.resume">Resume</a>
+      <a href="#top" data-i18n="foot.top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="close" id="lbClose" aria-label="Close">×</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+  // ---------- i18n: English lives in the HTML; Spanish here ----------
+  const ES = {
+    "skip":"Ir al contenido",
+    "nav.journey":"Trayectoria","nav.about":"Sobre mí","nav.leadership":"Liderazgo","nav.skills":"Habilidades","nav.education":"Educación","nav.resume":"CV ↗",
+    "hero.role":"Ingeniero Mecánico e Industrial",
+    "hero.focus":"// Transición energética · nuclear · solar e hidrógeno verde",
+    "hero.lede":"Diseño y modelo sistemas energéticos, y construyo organizaciones que hacen avanzar la conversación. Desde la simulación de eventos discretos hasta un movimiento estudiantil por la energía nuclear, me gusta convertir problemas difíciles en cosas que de verdad funcionan.",
+    "hero.cta.contact":"Conversemos","hero.cta.cv":"Descargar CV","hero.portrait":"retrato · 2025",
+    "journey.eyebrow":"A lo largo de los años","journey.title":"Algunos años, en imágenes.",
+    "journey.intro":"La versión corta de cómo llegué hasta aquí — desde el primer año de ingeniería hasta especializarme en energía a punto de titularme. Toca cualquier foto para verla en grande.",
+    "t1.title":"Comienzo de Ingeniería Mecánica","t1.body":"Primeros años en la UC — termodinámica, conversión de energía y el inicio de una obsesión por cómo se alimenta de energía un país.","t1.where":"Pontificia Universidad Católica de Chile",
+    "t2.title":"Fundación de Chile Nuclear","t2.body":"Lancé un movimiento estudiantil para defender la energía nuclear como parte de la descarbonización de la red eléctrica de Chile. Empezó con un puñado de personas y muchas diapositivas.","t2.where":"Fundador · Jefe de logística",
+    "t3.title":"Limpiando la costa con Ucéanos","t3.body":"Llevé las finanzas y la logística de limpiezas de playas a lo largo de la costa chilena — presupuestos, voluntarios y muchas bolsas de basura. Impacto que se puede medir.","t3.where":"Jefe de finanzas y logística",
+    "t4.title":"Semestre de intercambio en Praga","t4.body":"Un problema global necesita una mirada global. Estudié en la República Checa y volví con un mapa mucho más amplio de cómo funciona el mundo de la energía.","t4.where":"Intercambio Erasmus · República Checa",
+    "t5.title":"Sistemas energéticos y simulación","t5.body":"De lleno en el modelado — simulación de eventos discretos en Python, energía solar concentrada e investigación en hidrógeno verde. El núcleo técnico de lo que hago.","t5.where":"Investigación y cursos",
+    "t6.title":"Lic. en Ingeniería Mecánica","t6.body":"Terminé la carrera de ingeniería mecánica y entré directo al magíster en ingeniería industrial — finanzas, optimización y operaciones.","t6.where":"Titulado · Diciembre 2025",
+    "t7.title":"Titulándome y mirando al futuro","t7.body":"Terminando el magíster y buscando el lugar indicado para ponerlo en práctica — uno que se tome en serio la transición energética.","t7.where":"M.Sc. Ingeniería Industrial · 2026",
+    "about.eyebrow":"Sobre mí","about.title":"Ingeniero ante todo, siempre construyendo.",
+    "about.p1":"Soy Ingeniero Mecánico e Industrial de la UC, con una fuerte inclinación hacia la energía sostenible — energía nuclear, solar e hidrógeno verde. Me siento tan cómodo dentro de una simulación como frente a una sala defendiendo la energía limpia de base.",
+    "about.p2":"Aprendí lo que significa el impacto real gestionando presupuestos y coordinando limpiezas de playa con Ucéanos, y construí mi propio proyecto, Chile Nuclear, desde cero. En el camino he escrito código para automatizar procesos complejos y pasé un semestre en Praga, porque un problema global merece una perspectiva global.",
+    "about.p3":"Fuera del trabajo, normalmente me encontrarás en un sendero de montaña, en el taller con un nuevo proyecto DIY, o llevando mis límites al máximo con calistenia.",
+    "fact.focus.k":"Enfoque","fact.focus.v":"Sistemas energéticos · nuclear · solar e H₂",
+    "fact.based.k":"Ubicación","fact.building.k":"Construyendo","fact.building.v":"Chile Nuclear — divulgación energética",
+    "fact.modeling.k":"Modelado","fact.modeling.v":"Simulación de eventos discretos, Python",
+    "fact.langs.k":"Idiomas","fact.langs.v":"Español · Inglés · Italiano · Francés",
+    "fact.open.k":"Disponible para","fact.open.v":"Roles y prácticas en el sector energético",
+    "lead.eyebrow":"Liderazgo e impacto","lead.title":"Organizaciones que ayudé a construir.",
+    "lead.intro":"Dos proyectos que me enseñaron a liderar personas, gestionar dinero y entregar resultados reales — no solo ideas.",
+    "cn.role":"Fundador · Jefe de logística","cn.body":"Un movimiento estudiantil que difunde conocimiento sobre la energía nuclear y cómo puede ayudar a descarbonizar la red eléctrica de Chile.","cn.s1":"Miembros activos","cn.s2":"Voluntarios",
+    "uc.role":"Ex jefe de finanzas y logística","uc.body":"Limpiezas de playa impulsadas por la comunidad a lo largo de la costa chilena — participación real e impacto duradero, con un presupuesto real.","uc.s1":"Playas limpiadas","uc.s2":"Voluntarios",
+    "tag.leadership":"Liderazgo","tag.teamwork":"Trabajo en equipo","tag.speaking":"Hablar en público","tag.pr":"Relaciones públicas","tag.planning":"Planificación",
+    "work.eyebrow":"En qué trabajo","work.title":"El núcleo técnico.",
+    "f1.title":"Modelado de sistemas energéticos","f1.body":"Simulación de eventos discretos y de procesos en Python — ajuste de distribuciones, validación estadística y encontrar el cuello de botella que de verdad importa.",
+    "f2.title":"Solar y térmica","f2.body":"Modelado de energía solar concentrada y solar térmica, incluido el manejo de datos meteorológicos y el análisis tecno-económico para sitios de alta irradiación.",
+    "f3.title":"Hidrógeno y combustibles limpios","f3.body":"Hidrógeno verde, electrólisis y rutas de combustibles termoquímicos — la química y la economía de almacenar energía en forma de moléculas.",
+    "skills.eyebrow":"Habilidades","skills.title":"Las herramientas.",
+    "skills.g1":"Técnicas","skills.g2":"Herramientas","skills.g3":"Trabajo en equipo",
+    "skill.data":"Análisis de datos","skill.comm":"Comunicación","skill.adapt":"Adaptabilidad",
+    "edu.eyebrow":"Educación","edu.title":"Dónde estudié.",
+    "edu.expected":"Previsto · Dic","edu.graduated":"Titulado · Dic",
+    "edu1.deg":"M.Sc. Ingeniería Industrial","edu1.course":"Finanzas · Marketing · Optimización · Contabilidad",
+    "edu2.deg":"Lic. en Ingeniería Mecánica","edu2.course":"Termodinámica · Conversión de energía · Reactores nucleares",
+    "contact.eyebrow":"Contacto","contact.title":"Hablemos de energía.",
+    "contact.body":"Siempre estoy abierto a nuevos proyectos, ideas y oportunidades — especialmente en el sector energético. Escríbeme y veamos qué podemos construir.",
+    "contact.email":"Escríbeme","foot.resume":"CV","foot.top":"Volver arriba ↑"
+  };
+
+  const i18nEls = document.querySelectorAll('[data-i18n]');
+  const EN = {};
+  i18nEls.forEach(el => { EN[el.getAttribute('data-i18n')] = el.innerHTML; });
+
+  const btnEN = document.getElementById('lang-en');
+  const btnES = document.getElementById('lang-es');
+
+  function setLang(lang){
+    const dict = lang === 'es' ? ES : null;
+    i18nEls.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = dict && dict[key] != null ? dict[key] : EN[key];
+      if (val != null) el.innerHTML = val;
+    });
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    btnEN.setAttribute('aria-pressed', lang === 'en');
+    btnES.setAttribute('aria-pressed', lang === 'es');
+    try { localStorage.setItem('lang', lang); } catch(e){}
+  }
+  btnEN.addEventListener('click', () => setLang('en'));
+  btnES.addEventListener('click', () => setLang('es'));
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch(e){}
+  if (!saved) saved = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en';
+  if (saved === 'es') setLang('es');
+
+  // ---------- rotating multilingual welcome ----------
+  const greetings = ["Welcome.","Bienvenido.","Benvenuto.","Bienvenue."];
+  const welcomeWord = document.getElementById('welcomeWord');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce){
+    welcomeWord.textContent = greetings.join("  ·  ");
+  } else {
+    let gi = 0;
+    setInterval(() => {
+      welcomeWord.style.opacity = 0;
+      setTimeout(() => {
+        gi = (gi + 1) % greetings.length;
+        welcomeWord.textContent = greetings[gi];
+        welcomeWord.style.opacity = 1;
+      }, 400);
+    }, 2600);
+  }
+
+  // ---------- header shadow ----------
+  const header = document.getElementById('top');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 12);
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // ---------- mobile menu ----------
+  const menuBtn = document.getElementById('menuBtn');
+  const navlinks = document.getElementById('navlinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('show');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('show'); menuBtn.setAttribute('aria-expanded', false);
+  }));
+
+  // ---------- scroll reveal ----------
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---------- lightbox ----------
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbClose = document.getElementById('lbClose');
+  let lastFocus = null;
+  function openLb(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); lastFocus = document.activeElement; lbClose.focus(); }
+  function closeLb(){ lb.classList.remove('open'); lbImg.src=''; if(lastFocus) lastFocus.focus(); }
+  document.querySelectorAll('.photo[data-full]').forEach(fig => {
+    fig.addEventListener('click', () => {
+      if (!fig.classList.contains('has-img')) return;
+      openLb(fig.getAttribute('data-full'), fig.querySelector('img') ? fig.querySelector('img').alt : '');
+    });
+  });
+  lbClose.addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+</script>
 </body>
 </html>
